@@ -6,7 +6,7 @@
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:53:38 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/12 14:15:46 by zmeribaa         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:37:03 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 t_data	mosa3ada(int zid)
 {
 	t_data	img;
-	
+
 	img.zoom = 4;
-	img.a= 0;
+	img.a = 0;
 	img.b = 0;
 	img.mlx = mlx_init();
 	img.mlx_win = mlx_new_window(img.mlx, W_width, W_height, "Mandel Brot");
 	img.img = mlx_new_image(img.mlx, W_width, W_height);
-	img.addr = (int *)mlx_get_data_addr(img.img, &zid, &zid,&zid);
+	img.addr = (int *)mlx_get_data_addr(img.img, &zid, &zid, &zid);
 	return (img);
 }
 

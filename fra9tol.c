@@ -6,7 +6,7 @@
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:53:14 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/12 15:28:42 by zmeribaa         ###   ########.fr       */
+/*   Updated: 2021/12/15 04:48:50 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	mandel_brot(float x_axis, float y_axis)
         if (iteration == max) 
 			return (0x000000 * 10);
         else 
-			return ((0x000000 + iteration * log(500)));		
+			return (0xCCCCCC + iteration * exp(10));		
 }
 
 int	julia(float x_axis, float y_axis, float *c)
@@ -64,10 +64,10 @@ int	julia(float x_axis, float y_axis, float *c)
 		x = x_new;
 		y = y_new;
     }
-        if (iteration == max) 
-			return (0x000000 * 10);
-        else 
-			return ((0x000000 + iteration * log(500)));		
+    if (iteration == max) 
+		return (0x000000 * 10);
+    else 
+		return (0xCCCCCC + iteration * exp(10));	
 }
 
 int	sinking_ship(float x_axis, float y_axis)
@@ -91,10 +91,10 @@ int	sinking_ship(float x_axis, float y_axis)
 		x_new = (x * x) - (y * y) + x_axis;
 		y_new = fabs((2 * x * y)) + y_axis;
     }
-        if (iteration == max) 
-			return (0x000000 * 10);
-        else 
-			return ((0x000000 + iteration * log(500)));		
+    if (iteration == max) 
+		return (0x000000 * 10);
+   	else 
+		return (0xCCCCCC + iteration * exp(10));
 }
 
 void	fra9tol(t_data *img)
@@ -119,7 +119,7 @@ void	fra9tol(t_data *img)
 			if (img->type == 2)
 				draw(*img, i, j, mandel_brot(x,y));
 			if (img->type == 1)
-				draw(*img, i, j, julia(x,y, c));
+				draw(*img, i, j, julia(x,y,c));
 			if (img->type == 3)
 				draw(*img, i, j, sinking_ship(x,y));
 			j++;
@@ -142,6 +142,8 @@ int main(int ac, char **av)
 	mlx_mouse_hook(img.mlx_win, zoom, &img);
 	fra9tol(&img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	mlx_string_put(img.mlx,img.mlx_win,890,950,0xFFFFFF,"zmeribaa");
+	mlx_string_put(img.mlx,img.mlx_win,890,950,0xFFFFFF,"Movements: W,A,S,D or use arrows\n zoom with the mouse scroll\n");
 	mlx_loop(img.mlx);
 	return (1);
 }

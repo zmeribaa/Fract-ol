@@ -6,7 +6,7 @@
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:58:48 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/12 15:38:19 by zmeribaa         ###   ########.fr       */
+/*   Updated: 2021/12/15 00:29:31 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	keys(int keycode, t_data *img)
 		img->a -= 0.05 *img->zoom;
 	if (keycode == K_D || keycode == K_RIGHT)
 		img->a += 0.05 *img->zoom;
-	// if (keycode == K_W || keycode == K_UP)
-	// 	img-
 	return(0);
 }
 
