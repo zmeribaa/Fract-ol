@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 23:24:01 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/15 05:27:00 by zmeribaa         ###   ########.fr       */
+/*   Created: 2021/12/15 05:40:37 by zmeribaa          #+#    #+#             */
+/*   Updated: 2021/12/15 16:10:28 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYS_H
-# define KEYS_H
+#include "fract_ol.h"
 
-/* Keyboerd */
-
-# define K_ESCAPE 53
-# define K_UP 126
-# define K_DOWN 125
-# define K_RIGHT 124
-# define K_LEFT 123
-# define K_W 13
-# define K_A 0
-# define K_S 1
-# define K_D 2
-# define K_E 14
-# define K_Q 12
-# define K_Z 6
-# define K_C 8
-# define ENTER 36
-
-/* Mouse */
-
-# define M_G 1
-# define M_D 2
-# define M_S_C 3
-# define M_S_I 5
-# define M_S_O 4
-
-#endif
+void	draw(t_data img, int x, int y, int color)
+{
+	if (y < W_HEIGHT && x < W_WIDTH)
+		img.addr[y * W_WIDTH + x] = color;
+}

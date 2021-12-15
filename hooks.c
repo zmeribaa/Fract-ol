@@ -6,7 +6,7 @@
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:58:48 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/15 00:29:31 by zmeribaa         ###   ########.fr       */
+/*   Updated: 2021/12/15 16:10:24 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 int	keys(int keycode, t_data *img)
 {
-	if (keycode  == K_ESCAPE)
+	if (keycode == K_ESCAPE)
 		exit(0);
 	if (keycode == K_A || keycode == K_LEFT)
-		img->a -= 0.05 *img->zoom;
+		img->a -= 0.05 * img->zoom;
 	if (keycode == K_D || keycode == K_RIGHT)
-		img->a += 0.05 *img->zoom;
-	return(0);
+		img->a += 0.05 * img->zoom;
+	if (keycode == K_W || keycode == K_UP)
+		img->b -= 0.05 * img->zoom;
+	if (keycode == K_S || keycode == K_DOWN)
+		img->b += 0.05 * img->zoom;
+	mlx_clear_window(img->mlx, img->mlx_win);
+	fra9tol(*img);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+	return (0);
 }
 
-int zoom(int keycode, int x, int y, t_data *img)
+int	zoom(int keycode, int x, int y, t_data *img)
 {
 	x = x + 1 - 1;
 	y = y + 1 - 1;
@@ -34,7 +41,7 @@ int zoom(int keycode, int x, int y, t_data *img)
 		else
 			img->zoom += 0.1 * img->zoom;
 		mlx_clear_window(img->mlx, img->mlx_win);
-		fra9tol(img);
+		fra9tol(*img);
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
 	}
 	return (0);
@@ -43,7 +50,7 @@ int zoom(int keycode, int x, int y, t_data *img)
 float	*julia_affect(int type)
 {
 	float	*c;
-	
+
 	c = (float *)malloc(sizeof(float) * 2);
 	if (type == 1)
 	{
@@ -58,7 +65,7 @@ float	*julia_affect(int type)
 	if (type == 3)
 	{
 		c[0] = -0.835;
-		c[1] =  - 0.2321; 
+		c[1] = -0.2321;
 	}
 	if (type == 4)
 	{
