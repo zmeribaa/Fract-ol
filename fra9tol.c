@@ -6,7 +6,7 @@
 /*   By: zmeribaa <zmeribaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 21:53:14 by zmeribaa          #+#    #+#             */
-/*   Updated: 2021/12/15 16:28:14 by zmeribaa         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:45:41 by zmeribaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ void	fra9tol(t_data img)
 
 	i = 0;
 	c = julia_affect(img.julia);
-	while (i < W_WIDTH)
+	while (i++ < W_WIDTH)
 	{
 		j = 0;
-		while (j < W_HEIGHT)
+		while (j++ < W_HEIGHT)
 		{
 			x = (((float)i * img.zoom) / W_WIDTH) - (img.zoom / 2) + img.a;
 			y = (((float)j * img.zoom) / W_HEIGHT) - (img.zoom / 2) + img.b;
@@ -114,10 +114,9 @@ void	fra9tol(t_data img)
 				draw(img, i, j, julia(x, y, c));
 			if (img.type == 3)
 				draw(img, i, j, sinking_ship(x, y));
-			j++;
 		}
-		i++;
 	}
+	free(c);
 }
 
 int	main(int ac, char **av)
